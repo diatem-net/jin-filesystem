@@ -31,70 +31,70 @@ class PublicSecuredFile implements AssetsInterface
   /**
    * @var string  Dossier de stockage et d'accès des fichiers
    */
-  private static $storePath = null;
+  protected static $storePath = null;
 
   /**
    * @var string  Dossier /vendor. Utilisé uniquement dans le cas de structures de dossiers non standart.
    */
-  private static $autoloaderPath = null;
+  protected static $autoloaderPath = null;
 
   /**
    * @var integer  Longueur de la clé de sécurité générée
    */
-  private static $baseKeyLength = 16;
+  protected static $baseKeyLength = 16;
 
   /**
    * @var string  mode de calcul des clés de hashage (md4 par défaut)
    */
-  private static $hashMethod = 'md5';
+  protected static $hashMethod = 'md5';
 
   /**
    * @var string  Méthode de cryptage des données (aes128 par défaut)
    */
-  private static $encodeMethod = 'aes128';
+  protected static $encodeMethod = 'aes128';
 
   /**
    * @var string  Vecteur d'initialisation pour le cryptage des données
    */
-  private static $initializationVector = '1234567812345678';
+  protected static $initializationVector = '1234567812345678';
 
   /**
    * @var string  Clé privée
    */
-  private static $privateKey = '67141ABCE7159153';
+  protected static $privateKey = '67141ABCE7159153';
 
   /**
    * @var string  Nom du paramètres d'url
    */
-  private static $urlKeyArg = 'k';
+  protected static $urlKeyArg = 'k';
 
   /**
   * Dernière erreur rencontrée
 
   * @var string
   */
-  private $lastError = '';
+  protected $lastError = '';
 
   /**
    * Initialisée avec succès
    *
    * @var boolean
    */
-  private $initialized = false;
+  protected $initialized = false;
 
   /**
    * Chemin d'accès
    *
    * @var string
    */
-  private $path;
+  protected $path;
 
   /**
    * Nom de la clé du fichier
    *
    * @var string
    */
-  private $accessKey;
+  protected $accessKey;
 
   /**
    * Défini le dossier de stockage
@@ -289,7 +289,7 @@ class PublicSecuredFile implements AssetsInterface
    *
    * @return string
    */
-  private static function generateRandomKey()
+  protected static function generateRandomKey()
   {
     $chars = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F');
     $baseKey = '';
@@ -307,7 +307,7 @@ class PublicSecuredFile implements AssetsInterface
    * @param  string $valueToEncode Chaîne à encoder
    * @return string
    */
-  private static function encodeValue($valueToEncode)
+  protected static function encodeValue($valueToEncode)
   {
     return openssl_encrypt($valueToEncode, self::$encodeMethod, self::$privateKey, false, self::$initializationVector);
   }
@@ -318,7 +318,7 @@ class PublicSecuredFile implements AssetsInterface
    * @param  string $valueToDecode Chaîne à décoder
    * @return string
    */
-  private static function decodeValue($valueToDecode)
+  protected static function decodeValue($valueToDecode)
   {
     return openssl_decrypt($valueToDecode, self::$encodeMethod, self::$privateKey, false, self::$initializationVector);
   }
@@ -328,7 +328,7 @@ class PublicSecuredFile implements AssetsInterface
    *
    * @throws \Exception
    */
-  private static function checkSecureFolder()
+  protected static function checkSecureFolder()
   {
     if (!is_dir(static::getStorePath())) {
       mkdir(static::getStorePath());

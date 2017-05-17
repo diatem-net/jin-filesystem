@@ -17,17 +17,17 @@ class Folder implements \Iterator
   /**
    * @var string Chemin relatif d'accès au dossier à parcourir
    */
-  private $folderPath;
+  protected $folderPath;
 
   /**
    * @var array Tableau des fichiers/dossiers
    */
-  private $files = array();
+  protected $files = array();
 
   /**
    * @var string  Extensions à privilégier
    */
-  private $extensions = '';
+  protected $extensions = '';
 
   /**
    * Constructeur.  Initialiser l'objet, puis le parcourir avec un foreach($objet AS $fichier){ }
@@ -52,7 +52,7 @@ class Folder implements \Iterator
   /**
   * Préconstruit les données à partir des données transmises au constructeur
   */
-  private function buildData()
+  protected function buildData()
   {
     $handle = opendir($this->folderPath);
     while (false !== ($file = readdir($handle))) {

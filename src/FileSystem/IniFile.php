@@ -18,14 +18,14 @@ class IniFile
    *
    * @var array
    */
-  private $values = null;
+  protected $values = null;
 
   /**
    * Chemin d'accès absolu ou relatif au fichier INI
    *
    * @var string
    */
-  private $path;
+  protected $path;
 
   /**
    * Constructeur

@@ -17,25 +17,25 @@ class File
    * Contenu du fichier
    * @var string
    */
-  private $fileContent;
+  protected $fileContent;
 
   /**
    * Contenu du fichier, ligne par ligne
    * @var array
    */
-  private $fileLines;
+  protected $fileLines;
 
   /**
    * Chemin absolu de la ressource
    * @var string
    */
-  private $path;
+  protected $path;
 
   /**
    * Extension
    * @var string
    */
-  private $extension;
+  protected $extension;
 
   /**
    * Constructeur
@@ -97,7 +97,7 @@ class File
   /**
    * Lit le contenu du fichier
    */
-  private function readContent()
+  protected function readContent()
   {
     $this->fileContent = file_get_contents($this->path);
   }
@@ -105,7 +105,7 @@ class File
   /**
    * Lit les lignes du contenu du fichier
    */
-  private function readLines()
+  protected function readLines()
   {
     $this->fileLines = file($this->path);
   }

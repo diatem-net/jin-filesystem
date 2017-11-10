@@ -4,6 +4,8 @@ require '%autoloader%';
 
 use Jin2\FileSystem\PublicSecuredFile;
 
+PublicSecuredFile::init('%storepath%');
+
 if (!isset($_REQUEST['path']) || !isset($_REQUEST['k'])) {
   echo '404 - Paramètres manquants';
   header('HTTP/1.0 404 404 - Paramètres manquants');

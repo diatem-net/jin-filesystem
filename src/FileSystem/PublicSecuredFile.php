@@ -341,6 +341,7 @@ class PublicSecuredFile implements AssetsInterface
     if (!file_exists(static::getStorePath() . 'read.php')) {
       $afc = static::getAssetContent('read');
       $afc = str_replace('%autoloader%', self::$autoloaderPath, $afc);
+      $afc = str_replace('%storepath%', self::$storePath, $afc);
       $f = new File(static::getStorePath() . 'read.php', true);
       $f->write($afc);
     }

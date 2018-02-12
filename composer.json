@@ -2,7 +2,7 @@
     "name": "diatem-net/jin-filesystem",
     "description": "Utility classes to work with files and folders.",
     "type": "library",
-    "license": "GPLv3",
+    "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "Loïc Gérard",
